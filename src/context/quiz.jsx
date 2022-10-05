@@ -1,12 +1,14 @@
 import React from "react";
 import { createContext, useReducer } from "react";
 import questions from '../data/questions';
+import Question from "../components/Question.jsx";
 
 const STAGES = ["Start", "Playing", "End"]
 
 const initialState = {
   gameStage:  STAGES[0],
   questions,
+  currentQuestion: 0,
 }
 
 const quizReducer = (state, action) => {
@@ -18,6 +20,16 @@ const quizReducer = (state, action) => {
     return {
       ...state,
       gameStage: STAGES[1],
+    }
+
+    case "REORDER_QUESTIONS":
+      const reorderQuestions = questions.sort(() => {
+        return Math.random() -0.5;
+      });
+
+    return {
+      ...state,
+      questions: reorderQuestions,
     }
 
     default:
