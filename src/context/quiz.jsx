@@ -4,9 +4,9 @@ import questions from '../data/questions';
 
 const STAGES = ["Start", "Playing", "End"]
 
-const initialState ={
+const initialState = {
   gameStage:  STAGES[0],
-  questions
+  questions,
 }
 
 const quizReducer = (state, action) => {
@@ -15,7 +15,10 @@ const quizReducer = (state, action) => {
 
   switch(action.type){
     case "CHANGE_STATE":
-    return state;
+    return {
+      ...state,
+      gameStage: STAGES[1],
+    }
 
     default:
       return state;
