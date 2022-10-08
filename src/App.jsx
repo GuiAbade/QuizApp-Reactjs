@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { QuizContext } from './context/quiz';
 
 import Welcome from './components/Welcome';
@@ -12,14 +12,14 @@ function App() {
 
   useEffect(() => {
     dispatch({type:"REORDER_QUESTIONS"});
-  }, [])
+  }, []);
 
   return (
     <div className="App">
       <h1>Quiz de Programação</h1>
      {quizState.gameStage === "Start" && <Welcome/>}
      {quizState.gameStage === "Playing" && <Question/>}
-     {quizState.gameStage === "END" && <GameOver/>}
+     {quizState.gameStage === "End" && <GameOver/>}
     </div>
   )
 }

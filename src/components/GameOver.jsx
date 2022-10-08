@@ -1,16 +1,23 @@
+import React from "react";
 import { useContext } from "react";
 import {QuizContext} from "../context/quiz";
 
+import WellDone from "../img/WellDone.svg";
 
+import './GameOver.css'
 
-import './GameOver.css';
-
-function GameOver() {
+const GameOver = () => {
+  const [quizState, dispatch] = useContext(QuizContext);
   return (
-    <div>
-      <h2>Game Over</h2>
+    <div id="gameover">
+      <h2>Fim de Jogo!</h2>
+      <p>Pontuação: {quizState.score}</p>
+      <p>Você acertou {quizState.score} de {quizState.questions.length}{""} perguntas.</p>
+      <img src={WellDone} alt=" Fim do Quiz"/>
+      <button>Reiniciar</button>
+      
     </div>
-  )
-}
+  );
+};
 
-export default GameOver
+export default GameOver;
