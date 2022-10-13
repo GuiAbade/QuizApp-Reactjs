@@ -15,8 +15,7 @@ const  Question = () => {
       payload: {answer: currentQuestion.answer, option},
     });
   };
-
-
+  
   return(
     <div id='question'>
       <p>Pergunta {quizState.currentQuestion +1} de {quizState.questions.length}</p>
